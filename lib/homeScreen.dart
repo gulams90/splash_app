@@ -68,7 +68,7 @@ class _homeScreenState extends State<homeScreen> {
   void getUserDetails(String strId){
 
     try {
-
+      print("_homeScreenState getUserDetails................");
       DatabaseReference myRef = database.reference().child(DatabaseUtils.TBL_USER).child(strId);
       CommonUtils.showProgressBar(pr);
       myRef.once().then((DataSnapshot snapshot) {
@@ -82,7 +82,7 @@ class _homeScreenState extends State<homeScreen> {
             if(strUserType!=null){
               getAccessRightsDetails(strUserType);
             }else{
-
+              print("_homeScreenState getUserDetails else................");
 //              alData = MenuUtils.getAllMenuList();
               setState(() {
                 alData = MenuUtils.getAllMenuList();
@@ -194,9 +194,10 @@ class _homeScreenState extends State<homeScreen> {
 
   @override
   Widget build(BuildContext context) {
-
+    print("_homeScreenState build................");
     if(isFirst){
       isFirst=false;
+      print("_homeScreenState build isFirst................");
       initData();
     }
 

@@ -1,4 +1,6 @@
 //import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:async';
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -90,8 +92,11 @@ class _LoginScreenState extends State<LoginScreen> {
             PreferenceUtils.saveString(prefs,PreferenceUtils.PREF_COMPANYID, udata.orgId);
             PreferenceUtils.saveString(prefs,PreferenceUtils.PREF_USERID, udata.id);
             PreferenceUtils.saveString(prefs,PreferenceUtils.PREF_USERNAME, udata.name);
-            Navigator.of(this.context).pushReplacementNamed("/homeScreen");
+//            Navigator.of(context).popAndPushNamed("/homeScreen");
+//            Navigator.of(this.context).pushReplacementNamed("/homeScreen");
 //            Navigator.of(this.context).pushReplacementNamed("/HomeScreen");
+
+          startTime();
 
           }else{
             setState(() {
@@ -107,6 +112,15 @@ class _LoginScreenState extends State<LoginScreen> {
       print(e.toString());
     }
 
+  }
+
+  startTime() async {
+    var _duration = new Duration(seconds: 2);
+    return new Timer(_duration, navigationPage);
+  }
+
+  void navigationPage() async{
+    Navigator.of(this.context).pushReplacementNamed("/homeScreen");
   }
 
   void login(){
